@@ -42,7 +42,21 @@ enum
   TEXT_MODE_AND = 0x21
 };
 
+typedef struct
+{
+  unsigned int I1; // unknown changes indicator height, set to 0
+  unsigned int indicatormaximum; // max logical indicator range
+  unsigned int indicatorheight; // height of the indicator in units
+  unsigned int indicatorpos; // indicator position in units of max
+  unsigned int I5; // unknown, set to 0
+  unsigned short barleft; // x position of bar
+  unsigned short bartop; // y position of bar
+  unsigned short barheight; // height of bar
+  unsigned short barwidth; // width of bar
+} TScrollbar;
+
 void Bdisp_AreaClr_DD_x3( void*p1 );
+void Bdisp_DDRegisterSelect( int registerno );
 void Bdisp_EnableColor( int n );
 void Print_OS( unsigned char*msg, int mode, int zero2 );
 void Bdisp_PutDisp_DD( void );
@@ -63,18 +77,25 @@ void MsgBoxPop( void );
 void Box2( int, int );
 void locate_OS( int X, int y );
 void PrintLine( unsigned char*msg, int imax );
+void *GetMiniGlyphPtr( unsigned short mb_glyph_no, unsigned short*glyph_info );
+void PrintMiniGlyph(int x, int y, void*glyph, int mode_flags, int glyph_width, int, int, int, int, int color, int back_color, int );
 void PrintXY_2( int mode, int x, int y, int msgno, int color );
 void PrintXY( int x, int y, char*string, int mode, int color );
+void PrintMini( int *x, int *y, unsigned char *MB_string, int mode_flags, unsigned int xlimit, int P6, int P7, int color, int back_color, int writeflag, int P11 );
+void PrintMiniMini( int *x, int *y, unsigned char *MB_string, int mode1, char color, int mode2 );
 void SaveVRAM_1( void );
 void LoadVRAM_1( void );
 void SetBackGround( int );
 // These are needed for current addins and should be in this file
 int DefineStatusAreaFlags( int, int, void*, void* );
-void DefineStatusMessage( char*msg, short P2, char P3, char P4 );
+void DefineStatusMessage( char*msg, short P2, char color, char P4 );
 void DisplayStatusArea( void );
 void DrawFrame( int color );
 void DrawHeaderLine( void );
 void EnableStatusArea( int );
+void Scrollbar(TScrollbar *scrollbar);
+void ProgressBar0(int P1, int P2, int P3, int current, int max);
+void ProgressBar2(unsigned char *heading, int current, int max);
 
 // Original Author, Shaun McFall (Merthsoft)
 // Used with permission

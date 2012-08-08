@@ -174,6 +174,9 @@ void PRGM_GetKey_OS( unsigned char*p );
 int GetKey(int*key);
 int GetKeyWait_OS(int*column, int*row, int type_of_waiting, int timeout_period, int menu, unsigned short*keycode );
 int PRGM_GetKey();
+void EditMBStringCtrl(unsigned char *MB_string, int posmax, int *start, int *xpos, int *key, int x, int y);
+int EditMBStringChar(unsigned char *MB_string, int posmax, int xpos, int char_to_insert);
+void DisplayMBString(unsigned char *MB_string, int start, int xpos, int x, int y);
 
 #ifdef __cplusplus
 }

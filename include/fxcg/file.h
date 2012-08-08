@@ -23,6 +23,7 @@ enum
 int Bfile_CloseFile_OS( int HANDLE );
 int Bfile_CreateEntry_OS( const unsigned short*filename, int mode, int*size );
 int Bfile_DeleteEntry( const unsigned short *filename );
+int Bfile_RenameEntry( const unsigned short *oldpath, const unsigned short *newpath );
 int Bfile_FindClose( int FindHandle );
 int Bfile_FindFirst( const char *pathname, int *FindHandle, char *foundfile, void *fileinfo );
 int Bfile_FindFirst_NON_SMEM( const char *pathname, int *FindHandle, char *foundfile, void *fileinfo );
