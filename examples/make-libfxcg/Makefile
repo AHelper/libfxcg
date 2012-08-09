@@ -4,8 +4,8 @@ MKG3A=mkg3a
 RM=rm
 CFLAGS=-m4a-nofpu -mb -Os -mhitachi -Wall -I../include -lgcc -L../lib
 LDFLAGS=$(CFLAGS) -nostartfiles -T../toolchain/prizm.x -Wl,-static -Wl,-gc-sections
-CSOURCES=src/example1/example.c
-OBJECTS=src/example1/example.o
+CSOURCES=src/example.c
+OBJECTS=src/example.o
 BIN=Example.bin
 ADDIN=$(BIN:.bin=.g3a)
  

@@ -8,7 +8,7 @@ SET(CMAKE_CXX_OUTPUT_EXTENSION ".o")
 
 LINK_LIBRARIES(c)
 
-SET(CMAKE_C_FLAGS "-Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib -ffunction-sections -fdata-sections -I${CMAKE_CURRENT_SOURCE_DIR}/../include")
-SET(CMAKE_CXX_FLAGS "-Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib -ffunction-sections -fdata-sections -I${CMAKE_CURRENT_SOURCE_DIR}/../include")
+SET(CMAKE_C_FLAGS "-Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib -ffunction-sections -fdata-sections -I${CMAKE_MODULE_PATH}/include")
+SET(CMAKE_CXX_FLAGS "-Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib -ffunction-sections -fdata-sections -I${CMAKE_MODULE_PATH}/include")
 
-SET(CMAKE_EXE_LINKER_FLAGS "-L../lib -T../toolchain/prizm.x -Wl,-static -Wl,-gc-sections -nostdlib")
+SET(CMAKE_EXE_LINKER_FLAGS "-L${CMAKE_MODULE_PATH}/lib -T${CMAKE_MODULE_PATH}/toolchain/prizm.x -Wl,-static -Wl,-gc-sections -nostdlib")

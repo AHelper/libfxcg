@@ -169,9 +169,9 @@ example2_NAME = Example 2
 # ----------------------------------------------------
 # No big reason to edit anything below here
 # ----------------------------------------------------
-AM_CFLAGS = -Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib  -ffunction-sections -fdata-sections -I@srcdir@/../../include
-AM_CXXFLAGS = -Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib  -ffunction-sections -fdata-sections -I@srcdir@/../../include
-AM_LDFLAGS = -mb -m4a-nofpu -mhitachi -nostdlib -T@srcdir@/../../toolchain/prizm.x  -Wl,-static -Wl,-gc-sections -L@srcdir@/../../lib
+AM_CFLAGS = -Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib  -ffunction-sections -fdata-sections -I@srcdir@/../../../include
+AM_CXXFLAGS = -Os -Wall -mb -m4a-nofpu -mhitachi -nostdlib  -ffunction-sections -fdata-sections -I@srcdir@/../../../include
+AM_LDFLAGS = -mb -m4a-nofpu -mhitachi -nostdlib -T@srcdir@/../../../toolchain/prizm.x  -Wl,-static -Wl,-gc-sections -L@srcdir@/../../../lib
 LDADD = -lc
 all: all-am
 
@@ -521,7 +521,7 @@ uninstall-am: uninstall-binPROGRAMS
 
 
 all-local: $(bin_PROGRAMS:.bin=.g3a)
-%.g3a: 
+%.g3a: $(bin_PROGRAMS)
 	@echo mkg3a -n basic:\"$($(@:.g3a=)_NAME)\" -i uns:$($(@:.g3a=)_UNS) -i sel:$($(@:.g3a=)_SEL) $(@:.g3a=.bin) $@
 	mkg3a -n "basic:$($(@:.g3a=)_NAME)" -i uns:$($(@:.g3a=)_UNS) -i sel:$($(@:.g3a=)_SEL) $(@:.g3a=.bin) $@
 	cp $@ ../bin
