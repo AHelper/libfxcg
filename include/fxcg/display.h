@@ -68,6 +68,7 @@ unsigned short Bdisp_GetPoint_DD_Workbench( int x, int y );
 unsigned short Bdisp_GetPoint_DD( int x, int y );
 void Bdisp_AllClr_VRAM( void );
 void Bdisp_AreaClr( void*p1, unsigned char P2, unsigned short color );
+void Bdisp_Fill_VRAM(int color, int mode );
 void Cursor_SetFlashOn( unsigned char cursor_type );
 void Cursor_SetFlashOff( void );
 void Box( int, int, int, int, int );

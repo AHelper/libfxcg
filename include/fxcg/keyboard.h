@@ -153,6 +153,7 @@
 #define KEY_PRGM_F 26
 #define KEY_PRGM_ALPHA 77 
 #define KEY_PRGM_SHIFT 78
+#define KEY_PRGM_OPTN 68
 #define KEY_PRGM_MENU 48
 
 // in Bkey_GetKeyWait function
