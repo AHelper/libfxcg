@@ -50,6 +50,11 @@ int MCSOvwDat2( unsigned char*dir, unsigned char*item, int bytes_to_write, void*
 int MCSPutVar2( unsigned char*dir, unsigned char*item, int data_len, void*buffer );
 int MCS_WriteItem( unsigned char*dir, unsigned char*item, short itemtype, int data_length, int buffer );
 
+int SaveFileDialog( unsigned short *filenamebuffer, int mode );
+int OverwriteConfirmation( char*name, int mode );
+int OpenFileDialog( unsigned short keycode, unsigned short *filenamebuffer, int filenamebufferlength );
+int ConfirmFileOverwriteDialog( unsigned short *filename );
+
 #ifdef __cplusplus
 }
 #endif
