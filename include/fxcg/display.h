@@ -55,6 +55,8 @@ typedef struct
   unsigned short barwidth; // width of bar
 } TScrollbar;
 
+typedef unsigned short color_t;
+
 void Bdisp_AreaClr_DD_x3( void*p1 );
 void Bdisp_DDRegisterSelect( int registerno );
 void Bdisp_EnableColor( int n );
@@ -67,7 +69,7 @@ void Bdisp_SetPoint_DD( int x, int y, int color );
 unsigned short Bdisp_GetPoint_DD_Workbench( int x, int y );
 unsigned short Bdisp_GetPoint_DD( int x, int y );
 void Bdisp_AllClr_VRAM( void );
-void Bdisp_AreaClr( void*p1, unsigned char P2, unsigned short color );
+void Bdisp_AreaClr( void*p1, unsigned char P2, color_t color );
 void Bdisp_Fill_VRAM(int color, int mode );
 void Cursor_SetFlashOn( unsigned char cursor_type );
 void Cursor_SetFlashOff( void );
@@ -87,7 +89,6 @@ void PrintMiniMini( int *x, int *y, unsigned char *MB_string, int mode1, char co
 void SaveVRAM_1( void );
 void LoadVRAM_1( void );
 void SetBackGround( int );
-// These are needed for current addins and should be in this file
 int DefineStatusAreaFlags( int, int, void*, void* );
 void DefineStatusMessage( char*msg, short P2, char color, char P4 );
 void DisplayStatusArea( void );
@@ -97,12 +98,19 @@ void EnableStatusArea( int );
 void Scrollbar(TScrollbar *scrollbar);
 void ProgressBar0(int P1, int P2, int P3, int current, int max);
 void ProgressBar2(unsigned char *heading, int current, int max);
+void HourGlass( void );
+short CharacterSelectDialog( void );
+unsigned char ColorIndexDialog0( unsigned char initial_index );
+unsigned char ColorIndexDialog1( unsigned char initial_index, unsigned short disable_mask );
+unsigned char ColorIndexDialog2( unsigned char initial_index, unsigned short disable_mask );
+
+// Non-syscall functions
+void VRAM_CopySprite(const color_t* data, int x, int y, int width, int height);
+void VRAM_XORSprite(const color_t* data, int x, int y, int width, int height);
 
 // Original Author, Shaun McFall (Merthsoft)
 // Used with permission
 
-
-typedef unsigned short color_t;
 
 #define COLOR_ALICEBLUE (color_t)0xF7DF
 #define COLOR_ANTIQUEWHITE (color_t)0xFF5A

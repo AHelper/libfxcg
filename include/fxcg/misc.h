@@ -1,18 +1,11 @@
+#ifndef _MISC_H_
+#define _MISC_H_
+
 #ifdef __cplusplus
 extern "C" {
 #endif 
 
-#ifndef _MISC_H_
-#define _MISC_H_
-
 #include <stddef.h>
-
-typedef unsigned short color_t;
-
-int PRGM_GetKey();
-
-void VRAM_CopySprite(const color_t* data, int x, int y, int width, int height);
-void VRAM_XORSprite(const color_t* data, int x, int y, int width, int height);
 
 void sys_rand(unsigned seed);
 void sys_srand(unsigned seed);
@@ -54,8 +47,8 @@ char *sys_strncpy(char *dest, const char *src, size_t n);
 
 #endif
 
-#endif
-
 #ifdef __cplusplus
 }
+#endif
+
 #endif
