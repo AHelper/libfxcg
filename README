@@ -2,3 +2,12 @@ libfxcg
 Syscall and helper library for the Casio FX-CG (Prizm) color graphing calculator
 
 Not much to see here except the syscalls, hopefully that will change in the future.
+
+IMPORTANT NOTICE!!!!!!!!!!!!
+If you compiled your own gcc, you may have compiled libgcc as well.  If so, it
+is IMPORTANT to replace your libgcc with the one supplied in lib/.
+
+libc
+stdout prints to the LCD, no scrolling.
+stdin isn't functional.
+stderr prints to serial, just like it was before.

@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fxcg/display.h>
 
 typedef struct {
     int width;
@@ -15,7 +16,7 @@ typedef struct {
 
 typedef void (*writer_t)(const void *, char);
 typedef int (*formatter_t)(va_list, writer_t, const void *, format_t);
-
+#if 0
 /* These are the workers for formatting.  The main printf wrapper gets a writer
  * and destination, and this does the formatting while feeding characters to
  * the writer, passing dest through to the writer. */
@@ -301,3 +302,14 @@ int printf(const char *fmt, ...) {
 int vsprintf(char *str, const char *fmt, va_list ap) {
     return _v_printf(fmt, ap, _writer_buffer, &str);
 }
+int vsnprintf(char *str, size_t size, const char *fmt, va_list ap) {
+    return _v_printf(fmt, ap, _writer_buffer, &str);
+}
+int snprintf(char *str, size_t size, const char *format, ...) {
+    va_list ap;
+    va_start(ap, format);
+    int ret = vsprintf(str, format, ap);
+    va_end(ap);
+    return ret;
+}
+#endif

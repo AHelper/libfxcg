@@ -60,14 +60,15 @@ void* memmove(void* destination, const void* source, size_t num) {
 	free(d);
 	return destination;
 }
-
+// Syscall
+/*
 void *memset(void *dest, int c, unsigned int n) {
 	char* d = (char*)dest;
 	while (n-- > 0) { *d++ = (char)c; }
 	
 	return dest;
 }
-
+*/
 
 char *strcat(char *dest, const char *src) {
 	dest += strlen(dest);
