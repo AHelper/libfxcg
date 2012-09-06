@@ -33,6 +33,7 @@ char *strstr(const char *needle, const char *haystack);
 char *strtok(char *s, const char *sep);
 //char *strtok_r(char *s, const char *sep, char **lasts);
 size_t strxfrm(char *s1, const char *s2, size_t n);
+char * strerror( int errnum );
 
 #ifdef __cplusplus
 }

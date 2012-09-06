@@ -2,6 +2,11 @@
 ! By Tari and calc84maniac, based on Kristaba's reverse-engineered crt0.
  
     .extern _main
+    .extern start_ctors
+    .extern end_ctors
+    .extern start_dtors
+    .extern end_dtors
+    
     .global initialize
    
     .section ".pretext"
@@ -40,6 +45,15 @@ bssDone:
 ! RAM is now initialized
  
     mov r5, r14             ! Save parameter 2
+    mov.l ctors_s,r7
+    mov.l ctors_e, r8
+    mov.l @r7,r7
+    mov.l @r8,r8
+    cmp/eq r7, r8
+    bt no_ctors
+    jsr @r7
+    nop
+no_ctors:
     mov #1, r6
     mov #0, r4
     bsr _GlibAddinAplExecutionCheck
@@ -61,6 +75,14 @@ _GlibAddinAplExecutionCheck:
    
 ! Constants
     .align 4
+ctors_s:
+    .long start_ctors
+ctors_e:
+    .long end_ctors
+dtors_s:
+    .long start_dtors
+dtors_e:
+    .long end_dtors
 main:
     .long _main
 v_syscall:

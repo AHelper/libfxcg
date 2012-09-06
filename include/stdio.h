@@ -18,6 +18,9 @@ typedef struct {
     /* Just for rewinding the stream. */
     unsigned has_unput : 1;
     unsigned char unput;
+    unsigned int termx, termy;
+    unsigned char* __bufferstart;
+    unsigned int __bufferleft;
 } FILE;
 
 extern FILE _impl_stdin, _impl_stdout, _impl_stderr;
@@ -33,6 +36,10 @@ extern FILE _impl_stdin, _impl_stdout, _impl_stderr;
 
 #define FILENAME_MAX 16
 #define FOPEN_MAX (1 << (sizeof(FILE) - 1))
+
+#ifndef fpos_t
+typedef int fpos_t;
+#endif
 
 FILE *fopen(const char *path, const char *mode);
 FILE *fdopen(int fd, const char *mode);
@@ -60,9 +67,32 @@ int fputc(int c, FILE *stream);
 int putchar(int c);
 int puts(const char *s);
 
-int printf(const char *fmt, ...);
+int printf2(const char *format, ...);
+int printf(const char * fmt, ...);
 int sprintf(char *dest, const char *fmt, ...);
 int fprintf(FILE *stream, const char *fmt, ...);
+int fscanf ( FILE * stream, const char * format, ... );
+
+int fgetpos ( FILE * stream, fpos_t * position );
+int fsetpos ( FILE * stream, const fpos_t * pos );
+int fputs ( const char * str, FILE * stream );
+int fseek ( FILE * stream, long int offset, int origin );
+long int ftell ( FILE * stream );
+void perror ( const char * str );
+int remove ( const char * filename );
+int rename ( const char * oldname, const char * newname );
+int mkdir(const char *path, unsigned int mode);
+int  scanf ( const char * format, ... );
+void rewind ( FILE * stream );
+void setbuf ( FILE * stream, char * buffer );
+int setvbuf ( FILE * stream, char * buffer, int mode, size_t size );
+int sscanf ( const char * str, const char * format, ...);
+FILE * tmpfile ( void );
+char * tmpnam ( char * str );
+// int vfprintf ( FILE * stream, const char * format, va_list arg );
+// int vprintf ( const char * format, va_list arg );
+// int vsprintf (char * str, const char * format, va_list arg );
+int snprintf(char *str, size_t size, const char *format, ...);
 
 #ifdef __cplusplus
 }
