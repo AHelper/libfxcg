@@ -44,7 +44,7 @@ long strtol(const char *str, char **str_end, int base);
 void qsort(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
 
 void exit(int status);
-// This belongs here...
+// Even though this is non-standard, this is a syscall and this is the best spot for defining.
 void itoa( int value, unsigned char*result );
 
 #ifdef __cplusplus
